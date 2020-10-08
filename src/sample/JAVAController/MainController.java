@@ -1,4 +1,4 @@
-package sample;
+package sample.JAVAController;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 
 
-public class Controller {
+public class MainController {
 
     @FXML
     private ToggleButton bubbleSButton;

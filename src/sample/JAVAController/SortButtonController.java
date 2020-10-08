@@ -1,7 +1,10 @@
 package sample.JAVAController;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.MouseEvent;
 
 public class SortButtonController {
 
@@ -23,6 +26,11 @@ public class SortButtonController {
     @FXML
     private ToggleButton quickSButton;
 
+    @FXML
+    private Label titleSpeed;
+
+    @FXML
+    private Slider speedSlider;
 
     public void setAllOff() {
         bubbleSButton.setSelected(false);
@@ -39,32 +47,33 @@ public class SortButtonController {
     }
 
     @FXML
-    public void clickBubbleSort() {
-        this.select(bubbleSButton);
+    void clickBubbleSort(MouseEvent event) {
+        select(bubbleSButton);
     }
 
     @FXML
-    public void clickSelectionSort() {
-        this.select(selectionSButton);
+    void clickSelectionSort(MouseEvent event) {
+        select(selectionSButton);
     }
 
     @FXML
-    public void clickInsertionSort() {
-        this.select(insertionSButton);
+    void clickInsertionSort(MouseEvent event) {
+        select(insertionSButton);
     }
 
     @FXML
-    public void clickMergeSort() {
-        this.select(mergeSButton);
+    void clickMergeSort(MouseEvent event) {
+        select(mergeSButton);
     }
 
     @FXML
-    public void clickHeapSort() {
-        this.select(heapSButton);
+    void clickHeapSort(MouseEvent event) {
+        select(heapSButton);
     }
 
     @FXML
-    public void clickQuickSort() {
-        this.select(quickSButton);
+    void clickQuickSort(MouseEvent event) {
+        select(quickSButton);
     }
 }
+

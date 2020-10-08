@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="394.0" prefWidth="170.0" style="-fx-background-color: #4f4f5f;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="394.0" prefWidth="170.0" stylesheets="@../CSS/GroupSortButton.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JAVAController.SortButtonController">
    <children>
-       <ToggleButton fx:id="bubbleSButton" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@../CSS/GroupSortButton.css" text="Bubble Sort">
+       <ToggleButton fx:id="bubbleSButton" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#clickBubbleSort" stylesheets="@../CSS/GroupSortButton.css" text="Bubble Sort">
            <cursor>
                <Cursor fx:constant="HAND" />
            </cursor>
@@ -21,7 +21,7 @@
                <Insets bottom="15.0" left="25.0" right="10.0" top="10.0" />
            </VBox.margin>
        </ToggleButton>
-       <ToggleButton fx:id="selectionSButton" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@../CSS/GroupSortButton.css" text="Selection Sort" textFill="WHITE">
+       <ToggleButton fx:id="selectionSButton" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#clickSelectionSort" stylesheets="@../CSS/GroupSortButton.css" text="Selection Sort" textFill="WHITE">
            <cursor>
                <Cursor fx:constant="DEFAULT" />
            </cursor>
@@ -32,7 +32,7 @@
                <Insets bottom="15.0" left="25.0" right="10.0" top="10.0" />
            </VBox.margin>
        </ToggleButton>
-       <ToggleButton fx:id="insertionSButton" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@../CSS/GroupSortButton.css" text="Insertion Sort" textFill="WHITE">
+       <ToggleButton fx:id="insertionSButton" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#clickInsertionSort" stylesheets="@../CSS/GroupSortButton.css" text="Insertion Sort" textFill="WHITE">
            <cursor>
                <Cursor fx:constant="DEFAULT" />
            </cursor>
@@ -43,7 +43,7 @@
                <Insets bottom="15.0" left="25.0" right="10.0" top="10.0" />
            </VBox.margin>
        </ToggleButton>
-       <ToggleButton fx:id="mergeSButton" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@../CSS/GroupSortButton.css" text="Merge Sort" textFill="WHITE">
+       <ToggleButton fx:id="mergeSButton" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#clickMergeSort" stylesheets="@../CSS/GroupSortButton.css" text="Merge Sort" textFill="WHITE">
            <cursor>
                <Cursor fx:constant="HAND" />
            </cursor>
@@ -54,7 +54,7 @@
                <Insets bottom="15.0" left="25.0" right="10.0" top="10.0" />
            </VBox.margin>
        </ToggleButton>
-       <ToggleButton fx:id="heapSButton" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@../CSS/GroupSortButton.css" text="Heap Sort" textFill="WHITE">
+       <ToggleButton fx:id="heapSButton" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#clickHeapSort" stylesheets="@../CSS/GroupSortButton.css" text="Heap Sort" textFill="WHITE">
            <cursor>
                <Cursor fx:constant="HAND" />
            </cursor>
@@ -65,7 +65,7 @@
                <Insets bottom="15.0" left="25.0" right="10.0" top="10.0" />
            </VBox.margin>
        </ToggleButton>
-       <ToggleButton fx:id="quickSButton" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@../CSS/GroupSortButton.css" text="Quick Sort" textFill="WHITE">
+       <ToggleButton fx:id="quickSButton" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#clickQuickSort" stylesheets="@../CSS/GroupSortButton.css" text="Quick Sort" textFill="WHITE">
            <cursor>
                <Cursor fx:constant="HAND" />
            </cursor>
@@ -76,7 +76,7 @@
                <Insets bottom="15.0" left="25.0" right="10.0" top="10.0" />
            </VBox.margin>
        </ToggleButton>
-       <Label fx:id="tiltleSpeed" text="Speed" textFill="WHITE">
+       <Label fx:id="titleSpeed" stylesheets="@../CSS/GroupSortButton.css" text="Speed" textFill="WHITE">
            <VBox.margin>
                <Insets bottom="5.0" left="25.0" right="10.0" top="10.0" />
            </VBox.margin>

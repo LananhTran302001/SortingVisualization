@@ -4,15 +4,33 @@
     -fx-cursor: HAND;
 }
 
+.button:hover {
+    -fx-border-radius: 50%;
+    -fx-background-color: #555555;
+}
+
+
 .menu-button {
     -fx-alignment: CENTER_LEFT;
     -fx-background-color: transparent;
     -fx-cursor: HAND;
 }
 
+.menu-button:hover {
+    -fx-border-radius: 50%;
+    -fx-background-color: #555555;
+}
+
+
 .text-field {
     -fx-border-color: #fff;
     -fx-border-radius: 100%;
     -fx-background-color: transparent;
     -fx-text-inner-color: #fff;
+}
+
+HBox {
+    -fx-background-color: transparent;
+    -fx-pref-height: 70px;
+    -fx-margin-top: 15px;
 }

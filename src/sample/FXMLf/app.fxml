@@ -9,28 +9,28 @@
 
 <SplitPane dividerPositions="0.25" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <items>
-      <ScrollPane SplitPane.resizableWithParent="false">
+      <ScrollPane fitToHeight="true" fitToWidth="true" minWidth="180.0" prefHeight="400.0" prefWidth="500.0">
          <content>
-            <VBox alignment="CENTER_LEFT" prefHeight="495.0" prefWidth="172.0" style="-fx-background-color: #88889999;">
+            <VBox alignment="CENTER_LEFT" style="-fx-background-color: #fc766aff;">
                <children>
-                  <Label prefHeight="60.0" prefWidth="152.0" text="|SORTING |PROJECT" wrapText="true">
+                  <Label text="|SORTING |PROJECT  " textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="Monospaced Bold" size="24.0" />
+                        <Font name="Monospaced Bold" size="25.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="20.0" />
+                        <Insets bottom="25.0" left="20.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <fx:include maxWidth="1000.0" source="groupSortButton.fxml" />
+                  <fx:include source="groupSortButton.fxml" />
                </children>
             </VBox>
          </content>
       </ScrollPane>
-      <ScrollPane prefHeight="500.0" SplitPane.resizableWithParent="false">
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="500.0" prefWidth="600.0">
          <content>
-            <VBox prefWidth="530.0">
+            <VBox style="-fx-background-color: #022140;">
                <children>
-                  <fx:include prefWidth="500.0" source="rightMenuEdit.fxml" />
+                  <fx:include source="editButtons.fxml" />
                </children>
             </VBox>
          </content>

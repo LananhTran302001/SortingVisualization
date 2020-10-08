@@ -8,21 +8,22 @@
 
  }
 
- .toggle-button:hover {
-     -fx-text-fill: #990011FF;
-     -fx-background-color: #ffffff;
-     -fx-border-color: #ffffff;
-     -fx-effect: null;
-     -fx-cursor: HAND;
- }
+.toggle-button:hover {
+    -fx-text-fill: #990011FF;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ffffff;
 
- .toggle-button:selected {
-     -fx-border-color: #990011FF;
-     -fx-cursor: OPEN_HAND;
- }
+    -fx-effect: null;
+    -fx-cursor: HAND;
+}
 
- .slider {
-    -fx-pref-width: 130px;
-    -fx-pref-height: 14px;
-    -fx-max-width: 300px;
- }
+.toggle-button:selected {
+    -fx-text-fill: #990011FF;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-cursor: OPEN_HAND;
+}
+
+.vbox {
+    -fx-background-color: transparent;
+}
