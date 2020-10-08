@@ -1,0 +1,18 @@
+.button {
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-color: transparent;
+    -fx-cursor: HAND;
+}
+
+.menu-button {
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-color: transparent;
+    -fx-cursor: HAND;
+}
+
+.text-field {
+    -fx-border-color: #fff;
+    -fx-border-radius: 100%;
+    -fx-background-color: transparent;
+    -fx-text-inner-color: #fff;
+}

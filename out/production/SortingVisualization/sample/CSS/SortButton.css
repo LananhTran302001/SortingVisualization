@@ -1,0 +1,22 @@
+.toggle-button {
+    -fx-font: 13 System;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: transparent;
+    -fx-border-color: #ffffff;
+    -fx-effect: null;
+    -fx-margin-top: 10px;
+
+}
+
+.toggle-button:hover {
+    -fx-text-fill: #990011FF;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-effect: null;
+    -fx-cursor: HAND;
+}
+
+.toggle-button:selected {
+    -fx-border-color: #990011FF;
+    -fx-cursor: OPEN_HAND;
+}
