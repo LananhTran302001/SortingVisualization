@@ -1,7 +1,9 @@
 package control;
 
-import constant.AppConstants;
+import animation.SwapAnimation;
+import globalVar.AppConstants;
 
+import globalVar.Count;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -75,6 +77,7 @@ public class Controller implements Initializable {
         rectLine.setSpacing(AppConstants.SPACE);
         indexLine.setSpacing(AppConstants.SPACE);
         indexLine.setPrefHeight(10);
+        Count.resetSwapCount();
     }
 
     @FXML
@@ -178,11 +181,9 @@ public class Controller implements Initializable {
 
     @FXML
     void clickSort(ActionEvent event) {
-        int n = numArray.size();
-        for (int i = 0; i < n; i++) {
-            //JumpAnimation.play(numArray.getViewAt(i));
-            System.out.println(numArray.getAt(i).getRectangle().getX());
-        }
+        Count.resetSwapCount();
+        SwapAnimation.playSwapByAscend(numArray, 0, 1);
+        System.out.println(numArray.getViewAt(0).getLayoutX());
     }
 
 

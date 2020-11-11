@@ -1,6 +1,6 @@
 package control;
 
-import constant.AppConstants;
+import globalVar.AppConstants;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

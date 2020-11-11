@@ -1,4 +1,4 @@
-import constant.AppConstants;
+import globalVar.AppConstants;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,6 +1,5 @@
-package constant;
+package globalVar;
 
-import element.Vector2;
 import javafx.geometry.Insets;
 
 

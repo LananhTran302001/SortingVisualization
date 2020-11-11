@@ -1,6 +1,6 @@
 package element;
 
-import constant.AppConstants;
+import globalVar.AppConstants;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

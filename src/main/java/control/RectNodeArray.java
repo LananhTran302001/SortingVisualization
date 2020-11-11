@@ -1,9 +1,8 @@
 package control;
 
-import constant.AppConstants;
+import globalVar.AppConstants;
 import element.RectNode;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,6 +50,10 @@ public class RectNodeArray {
         return null;
     }
 
+    public int getValueAt(int index) {
+        return getAt(index).getValue();
+    }
+
     public StackPane getViewAt(int index) {
         if (index >= 0 && index < rectArr.size()) {
             return rectArr.get(index).getView();
@@ -89,12 +92,12 @@ public class RectNodeArray {
         swap(index01, index02);
     }
 
-    private void swap(int index01, int index02) {
+    public void swap(int index01, int index02) {
         Collections.swap(rectArr, index01, index02);
     }
 
     public int getDistance(int index01, int index02) {
-        return (index02 - index01) * AppConstants.SPACE + (index02 - index01 - 1) * AppConstants.WIDTH_UNIT;
+        return (index02 - index01) * (AppConstants.SPACE +  AppConstants.WIDTH_UNIT);
     }
 
     /*public Vector2 getNextPosition(RectNode rn) {
