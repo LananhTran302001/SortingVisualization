@@ -10,11 +10,19 @@ public class TimeDelay {
         }
     }
 
-    public static double SWAP_DURATION = 0.5;
+    public static double MOVE_DURATION = 0.5;
 
-    public static void setSwapDuration(double second) {
+    public static void setMoveDuration(double second) {
         if (second > 0) {
-            SWAP_DURATION = second;
+            MOVE_DURATION = second;
+        }
+    }
+
+    public static double PAUSE_DURATION = 1.5;
+
+    public static void setPauseDuration(double second) {
+        if (second > 0) {
+            PAUSE_DURATION = second;
         }
     }
 

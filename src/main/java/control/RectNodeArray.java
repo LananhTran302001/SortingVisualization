@@ -76,7 +76,7 @@ public class RectNodeArray {
         rectArr.clear();
     }
 
-    protected void randomize() {
+    protected void mix() {
         int n = size() / 2;
         for (int i = 0; i < n; i++) {
             randomSwap();
@@ -100,6 +100,15 @@ public class RectNodeArray {
         return (index02 - index01) * (AppConstants.SPACE +  AppConstants.WIDTH_UNIT);
     }
 
+    public List<StackPane> getListView() {
+        List<StackPane> paneList = new ArrayList<StackPane>();
+
+        for (RectNode rn : rectArr) {
+            paneList.add(rn.getView());
+        }
+
+        return paneList;
+    }
     /*public Vector2 getNextPosition(RectNode rn) {
         if (rn == null) {
             return new Vector2(0, 0);

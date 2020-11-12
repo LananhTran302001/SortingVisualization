@@ -6,8 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -72,10 +72,18 @@
                         <HBox fx:id="rectLine" alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
                         <HBox fx:id="indexLine" alignment="BOTTOM_CENTER" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                      </children></AnchorPane>
-                  <HBox alignment="BOTTOM_CENTER" spacing="10.0">
+                  <HBox alignment="TOP_CENTER" spacing="10.0">
                      <children>
-                        <Label text="Speed" />
-                        <ScrollBar fx:id="speedBar" min="20.0" unitIncrement="10.0" />
+                        <Label text="Swap Duration (second):" />
+                        <Slider fx:id="swapSlider" blockIncrement="0.25" majorTickUnit="0.5" max="5.0" min="0.5" onMouseClicked="#setSwapDuration" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
+                        <Label fx:id="swapText" layoutX="158.0" layoutY="10.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="402.0" spacing="10.0">
+                     <children>
+                        <Label text="Move Duration (second):" />
+                        <Slider fx:id="moveSlider" blockIncrement="0.25" majorTickUnit="0.5" max="5.0" min="0.5" onMouseClicked="#setMoveDuration" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
+                        <Label fx:id="moveText" layoutX="158.0" layoutY="10.0" />
                      </children>
                   </HBox>
                </children>

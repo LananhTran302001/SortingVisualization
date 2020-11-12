@@ -4,14 +4,18 @@ import animation.SwapAnimation;
 import globalVar.AppConstants;
 
 import globalVar.Count;
+import globalVar.TimeDelay;
+import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.ScrollBar;
+import javafx.scene.control.*;
+import javafx.scene.input.DragEvent;
+
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -23,8 +27,6 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     public static boolean allowNotify = true;
-
-    public static int arraySize = 0;
 
     RectNodeArray numArray = new RectNodeArray();
 
@@ -69,15 +71,40 @@ public class Controller implements Initializable {
     private HBox indexLine;
 
     @FXML
-    private ScrollBar speedBar;
+    private Slider swapSlider;
+
+    @FXML
+    private Label swapText;
+
+    @FXML
+    private Slider moveSlider;
+
+    @FXML
+    private Label moveText;
 
 
     public void initialize(URL location, ResourceBundle resources) {
-        sortView.setMinHeight(AppConstants.SORT_PANE_HEIGHT);
         rectLine.setSpacing(AppConstants.SPACE);
         indexLine.setSpacing(AppConstants.SPACE);
         indexLine.setPrefHeight(10);
         Count.resetSwapCount();
+
+        swapText.setText("   ");
+        moveText.setText("   ");
+
+        swapSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                swapText.textProperty().bind(Bindings.format("%.1f", swapSlider.valueProperty()));
+            }
+        });
+
+        moveSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                moveText.textProperty().bind(Bindings.format("%.1f", moveSlider.valueProperty()));
+            }
+        });
     }
 
     @FXML
@@ -117,11 +144,10 @@ public class Controller implements Initializable {
     @FXML
     void clickMix(ActionEvent event) {
         if (numArray.size() > 1) {
-            numArray.randomize();
-            rectLine.getChildren().clear();
-            for (int i = 0; i < numArray.size(); i++) {
-                rectLine.getChildren().add(numArray.getViewAt(i));
-            }
+
+            numArray.mix();
+            rectLine.getChildren().setAll(numArray.getListView());
+
         } else {
             notify("Not enough elements to mix");
         }
@@ -182,10 +208,27 @@ public class Controller implements Initializable {
     @FXML
     void clickSort(ActionEvent event) {
         Count.resetSwapCount();
-        SwapAnimation.playSwapByAscend(numArray, 0, 1);
+        SwapAnimation.playSwapByAscend(numArray, 0, 1, rectLine);
         System.out.println(numArray.getViewAt(0).getLayoutX());
     }
 
+
+    @FXML
+    void setMoveDuration(MouseEvent event) {
+        Float duration = Float.parseFloat(moveText.getText());
+        TimeDelay.setJumpDuration(duration);
+        TimeDelay.setMoveDuration(duration);
+        System.out.println("set moveDuration: " + duration);
+    }
+
+
+
+    @FXML
+    void setSwapDuration(MouseEvent event) {
+        Float duration = Float.parseFloat(swapText.getText());
+        TimeDelay.setPauseDuration(duration);
+        System.out.println("set swapDuration: " + duration);
+    }
 
     private void notify(String message) {
         System.out.println(message);
@@ -217,4 +260,8 @@ public class Controller implements Initializable {
         int lastIndex = indexLine.getChildren().size() - 1;
         indexLine.getChildren().remove(lastIndex);
     }
+
+
+
+
 }

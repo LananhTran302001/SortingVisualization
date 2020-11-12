@@ -10,7 +10,7 @@ public class MoveAnimation {
     protected static TranslateTransition getMoveRight(StackPane sprite, int distance) {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(sprite);
-        transition.setDuration(Duration.seconds(TimeDelay.SWAP_DURATION));
+        transition.setDuration(Duration.seconds(TimeDelay.MOVE_DURATION));
         transition.setAutoReverse(false);
         transition.setCycleCount(1);
         transition.setToX(distance);
