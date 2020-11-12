@@ -1,6 +1,7 @@
 package control;
 
 import globalVar.AppConstants;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,7 +17,7 @@ public class AlertBox {
 
         alertWindow.initModality(Modality.APPLICATION_MODAL);
         alertWindow.setTitle(title);
-        alertWindow.setMinWidth(AppConstants.BOX_MIN_WIDTH);
+        alertWindow.setMinWidth(AppConstants.ALERT_BOX_WIDTH);
 
         Label label = new Label(message);
 
@@ -25,6 +26,7 @@ public class AlertBox {
 
         VBox layout = new VBox();
         layout.getChildren().addAll(label, closeButton);
+        layout.setAlignment(Pos.CENTER);
         layout.setPadding(AppConstants.BOX_PADDING);
         layout.setSpacing(AppConstants.BOX_SPACE);
 

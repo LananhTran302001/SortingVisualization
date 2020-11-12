@@ -7,19 +7,19 @@ import javafx.util.Duration;
 
 public class MoveAnimation {
 
-    protected static TranslateTransition getMoveRight(StackPane sprite, int distance) {
+    protected static TranslateTransition getMoveRight(StackPane sprite, int destination) {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(sprite);
         transition.setDuration(Duration.seconds(TimeDelay.MOVE_DURATION));
         transition.setAutoReverse(false);
         transition.setCycleCount(1);
-        transition.setToX(distance);
+        transition.setToX(destination);
 
         return transition;
     }
 
-    protected static TranslateTransition getMoveLeft(StackPane sprite, int distance) {
-        return getMoveRight(sprite, -distance);
+    protected static TranslateTransition getMoveLeft(StackPane sprite, int destination) {
+        return getMoveRight(sprite, -destination);
     }
 
 

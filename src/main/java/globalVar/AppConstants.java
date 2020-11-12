@@ -25,6 +25,7 @@ public class AppConstants {
     public static final int MAX_TIMES_RANDOM = 30;
     public static final int MAX_VALUE_RANDOM = 100;
 
+    public static final int ALERT_BOX_WIDTH = 180;
     public static final int BOX_MIN_WIDTH = 400;
     public static final Insets BOX_PADDING = new Insets(20, 20, 20, 20);
     public static final int BOX_SPACE = 20;

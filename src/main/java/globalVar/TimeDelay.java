@@ -18,7 +18,7 @@ public class TimeDelay {
         }
     }
 
-    public static double PAUSE_DURATION = 1.5;
+    public static double PAUSE_DURATION = 0.5;
 
     public static void setPauseDuration(double second) {
         if (second > 0) {

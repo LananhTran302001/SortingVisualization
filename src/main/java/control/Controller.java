@@ -1,19 +1,17 @@
 package control;
 
+import algorithm.BubbleSort;
 import animation.SwapAnimation;
 import globalVar.AppConstants;
 
 import globalVar.Count;
 import globalVar.TimeDelay;
 import javafx.beans.binding.Bindings;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.input.DragEvent;
 
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -30,9 +28,11 @@ public class Controller implements Initializable {
 
     RectNodeArray numArray = new RectNodeArray();
 
-
     @FXML
     private Text pseudoCode;
+
+    @FXML
+    private Label countSwapText;
 
     @FXML
     private MenuButton newMenuButton;
@@ -89,22 +89,12 @@ public class Controller implements Initializable {
         indexLine.setPrefHeight(10);
         Count.resetSwapCount();
 
-        swapText.setText("   ");
-        moveText.setText("   ");
+        swapText.setText("0.5");
+        moveText.setText("0.5");
 
-        swapSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                swapText.textProperty().bind(Bindings.format("%.1f", swapSlider.valueProperty()));
-            }
-        });
+        swapSlider.valueProperty().addListener((observable, oldValue, newValue) -> swapText.textProperty().bind(Bindings.format("%.1f", swapSlider.valueProperty())));
 
-        moveSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                moveText.textProperty().bind(Bindings.format("%.1f", moveSlider.valueProperty()));
-            }
-        });
+        moveSlider.valueProperty().addListener((observable, oldValue, newValue) -> moveText.textProperty().bind(Bindings.format("%.1f", moveSlider.valueProperty())));
     }
 
     @FXML
@@ -130,15 +120,16 @@ public class Controller implements Initializable {
 
             numArray.clear();
             rectLine.getChildren().clear();
+            indexLine.getChildren().clear();
 
             for (Integer num : randomList) {
                 numArray.add(num);
                 rectLine.getChildren().addAll(numArray.getLastRectNode().getView());
                 addIndex();
             }
-        }
+        } // else: user canceled creating.
         newMenuButton.setText("New");
-        // else: user canceled creating.
+
     }
 
     @FXML
@@ -191,25 +182,33 @@ public class Controller implements Initializable {
             rectLine.getChildren().clear();
             indexLine.getChildren().clear();
             notify("Cleared all");
-        }
+        } // else: user canceled clearing
     }
 
     @FXML
     void clickOrder(ActionEvent event) {
-
+        SwapAnimation.playSwapByAscend(numArray, 1, 2, rectLine);
     }
 
     @FXML
     void clickPause(ActionEvent event) {
 
+        SwapAnimation.playSwapByAscend(numArray, 0, 2, rectLine);
     }
 
 
+    int i = 0;
+    int j = 1;
     @FXML
     void clickSort(ActionEvent event) {
         Count.resetSwapCount();
-        SwapAnimation.playSwapByAscend(numArray, 0, 1, rectLine);
-        System.out.println(numArray.getViewAt(0).getLayoutX());
+        BubbleSort.startBubbleSort(numArray, true, rectLine);
+        /*SwapAnimation.playSwapByAscend(numArray, i, j, rectLine);
+        j++;
+        if (j == numArray.size() - 1) {
+            i++;
+            j = i+1;
+        }*/
     }
 
 
