@@ -14,8 +14,16 @@ import javafx.util.Duration;
 
 public class SwapAnimation {
 
+    private static void underSwap(RectNodeArray rectArr, int index01, int index02, HBox rectLine, int halfDistance) {
+        System.out.println("Under swap");
+        rectArr.swap(index01, index02);
+        rectArr.getViewAt(index01).setTranslateX(halfDistance);
+        rectArr.getViewAt(index02).setTranslateX(-halfDistance);
+        rectLine.getChildren().setAll(rectArr.getListView());
+    }
 
-    public static SequentialTransition getSwap(RectNodeArray rectArr, int index01, int index02, boolean byAscendOrder, HBox rectLine) {
+
+    private static SequentialTransition getSwap(RectNodeArray rectArr, int index01, int index02, boolean byAscendOrder, HBox rectLine) {
 
         rectLine.getChildren().setAll(rectArr.getListView());
 
@@ -31,17 +39,25 @@ public class SwapAnimation {
         sequentialTransition.getChildren().add(pause);
 
 
-        boolean ascend = ((index02 - index01) * (rectArr.getValueAt(index02) - rectArr.getValueAt(index01))) > 0;
+        boolean ascend = ((index02 - index01) * (rectArr.getValueAt(index02) - rectArr.getValueAt(index01))) >= 0;
         if (ascend != byAscendOrder) {
 
             int distance = rectArr.getDistance(index01, index02);
-            TranslateTransition move01 = MoveAnimation.getMoveRight(rectArr.getViewAt(index01), distance);
-            TranslateTransition move02 = MoveAnimation.getMoveLeft(rectArr.getViewAt(index02), distance);
-            ParallelTransition swap = new ParallelTransition(move01, move02);
+            TranslateTransition move01 = MoveAnimation.getMoveRight(rectArr.getViewAt(index01), distance / 2);
+            TranslateTransition move02 = MoveAnimation.getMoveLeft(rectArr.getViewAt(index02), distance / 2);
+            ParallelTransition beforeSwap = new ParallelTransition(move01, move02);
 
+            TranslateTransition moveNext01 = MoveAnimation.getMoveLeft(rectArr.getViewAt(index01), 0);
+            TranslateTransition moveNext02 = MoveAnimation.getMoveRight(rectArr.getViewAt(index02), 0);
+            ParallelTransition afterSwap = new ParallelTransition(moveNext01, moveNext02);
+
+            beforeSwap.setOnFinished(event -> {
+                underSwap(rectArr, index01, index02, rectLine, distance / 2);
+                afterSwap.play();
+            });
 
             Count.countSwap();
-            sequentialTransition.getChildren().add(swap);
+            sequentialTransition.getChildren().add(beforeSwap);
         }
 
         TranslateTransition jumpDown01 = JumpAnimation.getJumpDownAction(rectArr.getViewAt(index01));
@@ -50,14 +66,11 @@ public class SwapAnimation {
 
         sequentialTransition.getChildren().add(jumpDown);
 
-
-
         return sequentialTransition;
     }
 
     public static SequentialTransition getSwapByAscend(RectNodeArray rectArr, int index01, int index02, HBox rectLine) {
 
-        System.out.println(index01 + " and " + index02);
         return getSwap(rectArr, index01, index02, true, rectLine);
     }
 
@@ -73,12 +86,14 @@ public class SwapAnimation {
         }
     }
 
-    public static void playSwapByAscend(int[] numbers, int index01, int index02, HBox rectLine) {
-        playSwapByAscend(new RectNodeArray(numbers), index01, index02, rectLine);
-    }
+
 
     public static SequentialTransition getSwapByDescend(RectNodeArray rectArr, int index01, int index02, HBox rectLine) {
         return getSwap(rectArr, index01, index02, false, rectLine);
+    }
+
+    public static void playSwapByDescend(int[] numbers, int index01, int index02, HBox rectLine) {
+        playSwapByDescend(new RectNodeArray(numbers), index01, index02, rectLine);
     }
 
     public static void playSwapByDescend(RectNodeArray rectArr, int index01, int index02, HBox rectLine) {

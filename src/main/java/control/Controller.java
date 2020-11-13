@@ -200,6 +200,7 @@ public class Controller implements Initializable {
     int j = 1;
     @FXML
     void clickSort(ActionEvent event) {
+        //SwapAnimation.playSwapByAscend(numArray, 0, 1, rectLine);
         BubbleSort.startBubbleSort(numArray, true, rectLine);
     }
 
