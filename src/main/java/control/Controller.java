@@ -1,6 +1,7 @@
 package control;
 
 import algorithm.BubbleSort;
+import algorithm.SelectionSort;
 import animation.SwapAnimation;
 import globalVar.AppConstants;
 
@@ -89,8 +90,8 @@ public class Controller implements Initializable {
         indexLine.setPrefHeight(10);
         Count.resetSwapCount();
 
-        swapText.setText("0.5");
-        moveText.setText("0.5");
+        swapText.setText("0.1");
+        moveText.setText("0.1");
 
         swapSlider.valueProperty().addListener((observable, oldValue, newValue) -> swapText.textProperty().bind(Bindings.format("%.1f", swapSlider.valueProperty())));
 
@@ -158,11 +159,6 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void clickAlgorithm(ActionEvent event) {
-
-    }
-
-    @FXML
     void clickDelete(ActionEvent event) {
         int size = numArray.size();
         int index = new DeleteBox().getIndexDelete(size);
@@ -185,10 +181,7 @@ public class Controller implements Initializable {
         } // else: user canceled clearing
     }
 
-    @FXML
-    void clickOrder(ActionEvent event) {
-        SwapAnimation.playSwapByAscend(numArray, 1, 2, rectLine);
-    }
+
 
     @FXML
     void clickPause(ActionEvent event) {
@@ -196,12 +189,58 @@ public class Controller implements Initializable {
     }
 
 
-    int i = 0;
-    int j = 1;
+    @FXML
+    void clickAscend(ActionEvent event) {
+        orderButton.setText("Ascend");
+    }
+
+    @FXML
+    void clickDescend(ActionEvent event) {
+        orderButton.setText("Descend");
+    }
+
+    @FXML
+    void clickBubbleSort(ActionEvent event) {
+        algorithmButton.setText("Bubble Sort");
+    }
+
+    @FXML
+    void clickInsertionSort(ActionEvent event) {
+        algorithmButton.setText("Insertion Sort");
+    }
+
+    @FXML
+    void clickQuickSort(ActionEvent event) {
+        algorithmButton.setText("Quick Sort");
+    }
+
+    @FXML
+    void clickSelectionSort(ActionEvent event) {
+        algorithmButton.setText("Selection Sort");
+    }
+
+
+
+
+
     @FXML
     void clickSort(ActionEvent event) {
-        //SwapAnimation.playSwapByAscend(numArray, 0, 1, rectLine);
-        BubbleSort.startBubbleSort(numArray, true, rectLine);
+        if (algorithmButton.getText().equals("Algorithm") || orderButton.getText().equals("Order")) {
+            notify("Please choose algorithm and order");
+        } else {
+            boolean ascendOrder = true;
+            if(orderButton.getText().equals("Ascend")) {
+                ascendOrder = true;
+            } else {
+                ascendOrder = false;
+            }
+
+            if (algorithmButton.getText().equals("Bubble Sort")) {
+                BubbleSort.startBubbleSort(numArray, ascendOrder, rectLine);
+            } else if (algorithmButton.getText().equals("Selection Sort")) {
+                SelectionSort.startSelectionSort(numArray, ascendOrder, rectLine);
+            }
+        }
     }
 
 

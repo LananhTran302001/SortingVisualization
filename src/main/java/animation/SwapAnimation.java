@@ -23,7 +23,7 @@ public class SwapAnimation {
     }
 
 
-    private static SequentialTransition getSwap(RectNodeArray rectArr, int index01, int index02, boolean byAscendOrder, HBox rectLine) {
+    public static SequentialTransition getSwap(RectNodeArray rectArr, int index01, int index02, boolean byAscendOrder, HBox rectLine) {
 
         rectLine.getChildren().setAll(rectArr.getListView());
 

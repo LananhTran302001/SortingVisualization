@@ -6,6 +6,7 @@ import globalVar.TimeDelay;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class JumpAnimation {
@@ -72,7 +73,33 @@ public class JumpAnimation {
 
     public static SequentialTransition getSequentJumpUpDownAction(RectNodeArray rectArr, int fromIndex, int toIndex) {
         SequentialTransition sequentialTransition = new SequentialTransition();
+        int indexMax = 0;
+        int oldIndexMax = 0;
         for (int i = fromIndex; i <= toIndex; i++) {
+            if (rectArr.getValueAt(indexMax) < rectArr.getValueAt(i)) {
+                oldIndexMax = indexMax;
+                indexMax = i;
+
+                TranslateTransition turnRed = getJumpUpDownAction(rectArr.getViewAt(indexMax));
+                int finalIndexMax = indexMax;
+                int finalOldIndexMax = oldIndexMax;
+                turnRed.setOnFinished(event -> {
+                    rectArr.getAt(finalOldIndexMax).setOriginalColor();
+                    rectArr.getAt(finalIndexMax).setColor(Color.RED);
+                });
+                sequentialTransition.getChildren().add(turnRed);
+            } else {
+                sequentialTransition.getChildren().add(getJumpUpDownAction(rectArr.getViewAt(i)));
+            }
+        }
+
+        for (int i = fromIndex; i < indexMax; i++) {
+            sequentialTransition.getChildren().add(getJumpUpDownAction(rectArr.getViewAt(i)));
+        }
+
+
+
+        for (int i = indexMax + 1; i <= toIndex; i++) {
             sequentialTransition.getChildren().add(getJumpUpDownAction(rectArr.getViewAt(i)));
         }
 

@@ -43,18 +43,18 @@
                   </HBox>
                   <HBox alignment="CENTER" spacing="15.0">
                      <children>
-                        <MenuButton fx:id="algorithmButton" mnemonicParsing="false" onAction="#clickAlgorithm" text="Algorithm">
+                        <MenuButton fx:id="algorithmButton" mnemonicParsing="false" text="Algorithm">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Bubble Sort" />
-                            <MenuItem mnemonicParsing="false" text="Insertion Sort" />
-                              <MenuItem mnemonicParsing="false" text="Heap Sort" />
-                              <MenuItem mnemonicParsing="false" text="Selection Sort" />
+                            <MenuItem mnemonicParsing="false" onAction="#clickBubbleSort" text="Bubble Sort" />
+                            <MenuItem mnemonicParsing="false" onAction="#clickInsertionSort" text="Insertion Sort" />
+                              <MenuItem mnemonicParsing="false" onAction="#clickQuickSort" text="Quick Sort" />
+                              <MenuItem mnemonicParsing="false" onAction="#clickSelectionSort" text="Selection Sort" />
                           </items>
                         </MenuButton>
-                        <MenuButton fx:id="orderButton" mnemonicParsing="false" onAction="#clickOrder" text="Order">
+                        <MenuButton fx:id="orderButton" mnemonicParsing="false" text="Order">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Ascend" />
-                            <MenuItem mnemonicParsing="false" text="Descend" />
+                            <MenuItem mnemonicParsing="false" onAction="#clickAscend" text="Ascend" />
+                            <MenuItem mnemonicParsing="false" onAction="#clickDescend" text="Descend" />
                           </items>
                         </MenuButton>
                         <Button fx:id="sortButton" mnemonicParsing="false" onAction="#clickSort" text="sort" />
@@ -72,14 +72,14 @@
                   <HBox alignment="TOP_CENTER" spacing="10.0">
                      <children>
                         <Label text="Swap Duration (second):" />
-                        <Slider fx:id="swapSlider" blockIncrement="0.25" majorTickUnit="0.5" max="5.0" min="0.5" onMouseClicked="#setSwapDuration" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
+                        <Slider fx:id="swapSlider" blockIncrement="0.2" majorTickUnit="0.4" max="2.9" min="0.1" onMouseClicked="#setSwapDuration" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
                         <Label fx:id="swapText" layoutX="158.0" layoutY="10.0" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="402.0" spacing="10.0">
                      <children>
                         <Label text="Move Duration (second):" />
-                        <Slider fx:id="moveSlider" blockIncrement="0.25" majorTickUnit="0.5" max="5.0" min="0.5" onMouseClicked="#setMoveDuration" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
+                        <Slider fx:id="moveSlider" blockIncrement="0.2" majorTickUnit="0.4" max="2.9" min="0.1" onMouseClicked="#setMoveDuration" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
                         <Label fx:id="moveText" layoutX="158.0" layoutY="10.0" />
                      </children>
                   </HBox>

@@ -75,5 +75,9 @@ public class RectNode {
         return Color.hsb(hue, saturation, luminance);
     }
 
+    public void setOriginalColor() {
+        setColor(getRandomColor(this.value));
+    }
+
 
 }

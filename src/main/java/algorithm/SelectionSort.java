@@ -1,5 +1,6 @@
 package algorithm;
 
+import animation.JumpAnimation;
 import animation.SwapAnimation;
 import control.RectNodeArray;
 import javafx.animation.SequentialTransition;
@@ -13,26 +14,46 @@ public class SelectionSort {
 
     public static void startSelectionSort(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine) {
         i = rectArr.size() - 1;
-        j = 1;
-        SequentialTransition selectionSort = SwapAnimation.getSwapByAscend(rectArr, 0, 1, rectLine);
-        selectionSort.setOnFinished(event -> setNextSwap(rectArr, rectLine));
+        for (j = 1; j < i; j++) {
+            if (rectArr.getValueAt(maxIndex) < rectArr.getValueAt(j)) {
+                maxIndex = j;
+            }
+        }
+        SequentialTransition selectionSort = JumpAnimation.getSequentJumpUpDownAction(rectArr, 1, i);
+
+        if (maxIndex != i) {
+            selectionSort.getChildren().add(SwapAnimation.getSwap(rectArr, maxIndex, i, byAscendOrder, rectLine));
+        }
+
+        selectionSort.setOnFinished(event -> {
+            rectArr.getAt(i).setColor(Color.GRAY);
+            setNextSelect(rectArr, byAscendOrder, rectLine);
+        });
         selectionSort.play();
 
     }
 
 
-    private static void setNextSwap(RectNodeArray rectArr, HBox rectLine) {
-        if (i < 2 || j < i) {
-            if (j < i - 1) {
-                j++;
-            } else {
-                rectArr.getAt(j + 1).setColor(Color.GRAY);
-                i++;
-                j = 0;
+    private static void setNextSelect(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine) {
+        if (i > 2) {
+            i--;
+            maxIndex = 0;
+            for (j = 1; j < i; j++) {
+                if (rectArr.getValueAt(maxIndex) < rectArr.getValueAt(j)) {
+                    maxIndex = j;
+                }
             }
-            SequentialTransition nextSwap = SwapAnimation.getSwapByAscend(rectArr, j, j + 1, rectLine);
-            nextSwap.setOnFinished(event -> setNextSwap(rectArr, rectLine));
-            nextSwap.play();
+            SequentialTransition nextSelection = JumpAnimation.getSequentJumpUpDownAction(rectArr, 1, i);
+
+            if (maxIndex != i) {
+                nextSelection.getChildren().add(SwapAnimation.getSwap(rectArr, maxIndex, i, byAscendOrder, rectLine));
+            }
+            nextSelection.setOnFinished(event -> {
+                rectArr.getAt(i).setColor(Color.GRAY);
+                setNextSelect(rectArr, byAscendOrder, rectLine);
+            });
+            nextSelection.play();
+
         } else {
             rectArr.getAt(0).setColor(Color.GRAY);
             rectArr.getAt(1).setColor(Color.GRAY);
