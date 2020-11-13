@@ -35,7 +35,7 @@ public class SelectionSort {
 
 
     private static void setNextSelect(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine) {
-        if (i > 2) {
+        if (i > 1) {
             i--;
             maxIndex = 0;
             for (j = 1; j < i; j++) {

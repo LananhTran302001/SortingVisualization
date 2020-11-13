@@ -93,16 +93,6 @@ public class JumpAnimation {
             }
         }
 
-        for (int i = fromIndex; i < indexMax; i++) {
-            sequentialTransition.getChildren().add(getJumpUpDownAction(rectArr.getViewAt(i)));
-        }
-
-
-
-        for (int i = indexMax + 1; i <= toIndex; i++) {
-            sequentialTransition.getChildren().add(getJumpUpDownAction(rectArr.getViewAt(i)));
-        }
-
         return sequentialTransition;
     }
 }
