@@ -37,7 +37,7 @@ public class JumpAnimation {
         transition.play();
     }
 
-    protected static TranslateTransition getJumpUpAction(StackPane sprite) {
+    public static TranslateTransition getJumpUpAction(StackPane sprite) {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(sprite);
         transition.setDuration(Duration.seconds(TimeDelay.JUMP_DURATION));

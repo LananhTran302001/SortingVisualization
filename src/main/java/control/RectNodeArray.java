@@ -13,6 +13,25 @@ public class RectNodeArray {
 
     private List<RectNode> rectArr = new ArrayList<RectNode>();
 
+    public RectNodeArray() {
+        rectArr.clear();
+    }
+
+    public RectNodeArray(int[] values) {
+        rectArr.clear();
+        for (int i : values) {
+            rectArr.add(new RectNode(i));
+        }
+    }
+
+    public RectNodeArray( RectNodeArray other) {
+        rectArr.clear();
+        int n = other.size();
+        for (int i = 0; i < n; i++) {
+            rectArr.add(new RectNode(other.getValueAt(i)));
+        }
+    }
+
     public int size() {
         return rectArr.size();
     }

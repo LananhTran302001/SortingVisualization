@@ -192,8 +192,7 @@ public class Controller implements Initializable {
 
     @FXML
     void clickPause(ActionEvent event) {
-
-        SwapAnimation.playSwapByAscend(numArray, 0, 2, rectLine);
+        BubbleSort.startBubbleSort(numArray, true, rectLine);
     }
 
 
@@ -201,14 +200,7 @@ public class Controller implements Initializable {
     int j = 1;
     @FXML
     void clickSort(ActionEvent event) {
-        Count.resetSwapCount();
         BubbleSort.startBubbleSort(numArray, true, rectLine);
-        /*SwapAnimation.playSwapByAscend(numArray, i, j, rectLine);
-        j++;
-        if (j == numArray.size() - 1) {
-            i++;
-            j = i+1;
-        }*/
     }
 
 

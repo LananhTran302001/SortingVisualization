@@ -32,4 +32,6 @@ public class AppConstants {
 
     public static int JUMP_HEIGHT = -50;
     public static double JUMP_DURATION = 0.5;
+
+    public static String PATH_LOGGER_FILE = "src/main/resources/sortLogger/Logger.txt";
 }
