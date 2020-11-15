@@ -128,6 +128,12 @@ public class RectNodeArray {
 
         return paneList;
     }
+
+    public void reset() {
+        for (RectNode rn : rectArr) {
+            rn.setOriginalColor();
+        }
+    }
     /*public Vector2 getNextPosition(RectNode rn) {
         if (rn == null) {
             return new Vector2(0, 0);

@@ -1,6 +1,7 @@
 package control;
 
 import algorithm.BubbleSort;
+import algorithm.InsertionSort;
 import algorithm.SelectionSort;
 import animation.SwapAnimation;
 import globalVar.AppConstants;
@@ -87,7 +88,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         rectLine.setSpacing(AppConstants.SPACE);
         indexLine.setSpacing(AppConstants.SPACE);
-        indexLine.setPrefHeight(10);
+        indexLine.setPrefHeight(AppConstants.HEIGHT_INDEX);
         Count.resetSwapCount();
 
         swapText.setText("0.1");
@@ -225,20 +226,20 @@ public class Controller implements Initializable {
 
     @FXML
     void clickSort(ActionEvent event) {
+        reset();
         if (algorithmButton.getText().equals("Algorithm") || orderButton.getText().equals("Order")) {
             notify("Please choose algorithm and order");
         } else {
             boolean ascendOrder = true;
-            if(orderButton.getText().equals("Ascend")) {
-                ascendOrder = true;
-            } else {
-                ascendOrder = false;
-            }
+            ascendOrder = orderButton.getText().equals("Ascend");
 
-            if (algorithmButton.getText().equals("Bubble Sort")) {
+            String algo = algorithmButton.getText();
+            if (algo.equals("Bubble Sort")) {
                 BubbleSort.startBubbleSort(numArray, ascendOrder, rectLine);
-            } else if (algorithmButton.getText().equals("Selection Sort")) {
+            } else if (algo.equals("Selection Sort")) {
                 SelectionSort.startSelectionSort(numArray, ascendOrder, rectLine);
+            } else if (algo.equals("Insertion Sort")) {
+                InsertionSort.startInsertionSort(numArray, ascendOrder, rectLine);
             }
         }
     }
@@ -292,7 +293,10 @@ public class Controller implements Initializable {
         indexLine.getChildren().remove(lastIndex);
     }
 
-
+    private void reset() {
+        numArray.reset();
+        rectLine.getChildren().setAll(numArray.getListView());
+    }
 
 
 }

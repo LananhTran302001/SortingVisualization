@@ -15,6 +15,8 @@ public class AppConstants {
     public static final int HEIGHT_UNIT = 3;
     public static final int SPACE = 10;
 
+    public static final int HEIGHT_INDEX = 10;
+
     public static final int SORT_PANE_HEIGHT = 500;
 
     public static final double MIN_DELAY = 0.1;
