@@ -1,0 +1,42 @@
+VBox {
+    -fx-background-color: #0b0c10;
+}
+.slider .axis .axis-tick-mark, .slider .axis .axis-minor-tick-mark {
+    -fx-fill: null;
+    -fx-stroke: #66fcf1;
+}
+
+.slider {
+    -fx-cursor: HAND;
+}
+
+.slider .axis {
+    -fx-tick-label-fill: #66fcf1;
+}
+
+.slider .thumb{
+    -fx-background-color: #45a29e;
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-border-color: #66fcf1;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-cursor: HAND;
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #66fcf1;
+}
+
+.menu-button:hover {
+    -fx-cursor: HAND;
+}
+
+.menu-item .label {
+    -fx-background-color: transparent;
+}

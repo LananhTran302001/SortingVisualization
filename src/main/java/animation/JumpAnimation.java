@@ -30,7 +30,7 @@ public class JumpAnimation {
         return getJumpAction(sprite, -AppConstants.JUMP_HEIGHT);
     }
 
-    protected static TranslateTransition getJumpBackAction(StackPane sprite) {
+    public static TranslateTransition getJumpBackAction(StackPane sprite) {
         return getJumpAction(sprite, 0);
     }
 
@@ -66,10 +66,10 @@ public class JumpAnimation {
             boolean changeIndex;
             if (byAscendOrder) {
                 // By ascend order -> find maxIndex
-                changeIndex = rectArr.getValueAt(index) <= rectArr.getValueAt(i);
+                changeIndex = (i == fromIndex) || (rectArr.getValueAt(index) < rectArr.getValueAt(i));
             } else {
                 // By descend order -> find minIndex
-                changeIndex = rectArr.getValueAt(index) >= rectArr.getValueAt(i);
+                changeIndex = (i == fromIndex) || (rectArr.getValueAt(index) > rectArr.getValueAt(i));
             }
 
             if (changeIndex) {

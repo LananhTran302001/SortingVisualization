@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -61,9 +62,6 @@ public class Controller implements Initializable {
     private Button sortButton;
 
     @FXML
-    private Button pauseButton;
-
-    @FXML
     private AnchorPane sortView;
 
     @FXML
@@ -73,10 +71,10 @@ public class Controller implements Initializable {
     private HBox indexLine;
 
     @FXML
-    private Slider swapSlider;
+    private Slider pauseSlider;
 
     @FXML
-    private Label swapText;
+    private Label pauseText;
 
     @FXML
     private Slider moveSlider;
@@ -91,10 +89,10 @@ public class Controller implements Initializable {
         indexLine.setPrefHeight(AppConstants.HEIGHT_INDEX);
         Count.resetSwapCount();
 
-        swapText.setText("0.1");
+        pauseText.setText("0.1");
         moveText.setText("0.1");
 
-        swapSlider.valueProperty().addListener((observable, oldValue, newValue) -> swapText.textProperty().bind(Bindings.format("%.1f", swapSlider.valueProperty())));
+        pauseSlider.valueProperty().addListener((observable, oldValue, newValue) -> pauseText.textProperty().bind(Bindings.format("%.1f", pauseSlider.valueProperty())));
 
         moveSlider.valueProperty().addListener((observable, oldValue, newValue) -> moveText.textProperty().bind(Bindings.format("%.1f", moveSlider.valueProperty())));
     }
@@ -136,6 +134,7 @@ public class Controller implements Initializable {
 
     @FXML
     void clickMix(ActionEvent event) {
+        reset();
         if (numArray.size() > 1) {
 
             numArray.mix();
@@ -183,13 +182,6 @@ public class Controller implements Initializable {
     }
 
 
-
-    @FXML
-    void clickPause(ActionEvent event) {
-        BubbleSort.startBubbleSort(numArray, true, rectLine);
-    }
-
-
     @FXML
     void clickAscend(ActionEvent event) {
         orderButton.setText("Ascend");
@@ -219,8 +211,6 @@ public class Controller implements Initializable {
     void clickSelectionSort(ActionEvent event) {
         algorithmButton.setText("Selection Sort");
     }
-
-
 
 
 
@@ -256,10 +246,10 @@ public class Controller implements Initializable {
 
 
     @FXML
-    void setSwapDuration(MouseEvent event) {
-        Float duration = Float.parseFloat(swapText.getText());
+    void setPauseDuration(MouseEvent event) {
+        Float duration = Float.parseFloat(pauseText.getText());
         TimeDelay.setPauseDuration(duration);
-        System.out.println("set swapDuration: " + duration);
+        System.out.println("set pauseDuration: " + duration);
     }
 
     private void notify(String message) {
@@ -285,6 +275,7 @@ public class Controller implements Initializable {
         Label label = new Label(Integer.toString(size));
         label.setPrefWidth(AppConstants.WIDTH_UNIT);
         label.setAlignment(Pos.CENTER);
+        label.setStyle("-fx-text-fill: #66fcf1;");
         indexLine.getChildren().add(label);
     }
 

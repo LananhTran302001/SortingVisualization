@@ -1,0 +1,8 @@
+VBox {
+    -fx-background-color: #88bdbc;
+    -fx-spacing: 15px;
+}
+
+.label {
+    -fx-text-fill: #112d32;
+}

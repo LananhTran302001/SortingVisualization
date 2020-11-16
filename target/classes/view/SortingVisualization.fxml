@@ -15,20 +15,20 @@
 
 <SplitPane dividerPositions="0.35" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.Controller">
    <items>
-      <VBox>
+      <VBox stylesheets="@../style/PseudoPaneStyle.css">
          <children>
             <Label text="SORTING VISUALIZATION" />
             <Label fx:id="countSwapText" text="COUNT SWAP:" />
             <Text fx:id="pseudoCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
          </children>
       </VBox>
-      <ScrollPane fitToHeight="true" fitToWidth="true">
+      <ScrollPane fitToHeight="true" fitToWidth="true" stylesheets="@../style/PaneStyle.css">
          <content>
             <VBox alignment="TOP_CENTER">
                <children>
                   <HBox alignment="CENTER" spacing="15.0">
                      <children>
-                        <MenuButton fx:id="newMenuButton" mnemonicParsing="false" text="New">
+                        <MenuButton fx:id="newMenuButton" mnemonicParsing="false" text="New" textFill="WHITE">
                           <items>
                             <MenuItem mnemonicParsing="false" onAction="#clickNewEmpty" text="Empty" />
                             <MenuItem mnemonicParsing="false" onAction="#clickNewRandom" text="Random" />
@@ -40,10 +40,13 @@
                         <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#clickDelete" text="delete" />
                         <Button fx:id="addButton" mnemonicParsing="false" onAction="#clickAdd" text="add" />
                      </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
                   </HBox>
                   <HBox alignment="CENTER" spacing="15.0">
                      <children>
-                        <MenuButton fx:id="algorithmButton" mnemonicParsing="false" text="Algorithm">
+                        <MenuButton fx:id="algorithmButton" mnemonicParsing="false" text="Algorithm" textFill="WHITE">
                           <items>
                             <MenuItem mnemonicParsing="false" onAction="#clickBubbleSort" text="Bubble Sort" />
                             <MenuItem mnemonicParsing="false" onAction="#clickInsertionSort" text="Insertion Sort" />
@@ -51,15 +54,17 @@
                               <MenuItem mnemonicParsing="false" onAction="#clickSelectionSort" text="Selection Sort" />
                           </items>
                         </MenuButton>
-                        <MenuButton fx:id="orderButton" mnemonicParsing="false" text="Order">
+                        <MenuButton fx:id="orderButton" mnemonicParsing="false" text="Order" textFill="WHITE">
                           <items>
                             <MenuItem mnemonicParsing="false" onAction="#clickAscend" text="Ascend" />
                             <MenuItem mnemonicParsing="false" onAction="#clickDescend" text="Descend" />
                           </items>
                         </MenuButton>
                         <Button fx:id="sortButton" mnemonicParsing="false" onAction="#clickSort" text="sort" />
-                        <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#clickPause" text="pause" />
                      </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
                   </HBox>
                   <AnchorPane fx:id="sortView" prefHeight="20.0" VBox.vgrow="ALWAYS">
                      <VBox.margin>
@@ -71,16 +76,16 @@
                      </children></AnchorPane>
                   <HBox alignment="TOP_CENTER" spacing="10.0">
                      <children>
-                        <Label text="Swap Duration (second):" />
-                        <Slider fx:id="swapSlider" blockIncrement="0.2" majorTickUnit="0.4" max="2.9" min="0.1" onMouseClicked="#setSwapDuration" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
-                        <Label fx:id="swapText" layoutX="158.0" layoutY="10.0" />
+                        <Label style="-fx-text-fill: #66fcf1;" text="Pause Duration (second):" />
+                        <Slider fx:id="pauseSlider" blockIncrement="0.2" majorTickUnit="0.4" max="2.9" min="0.1" onMouseClicked="#setPauseDuration" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
+                        <Label fx:id="pauseText" layoutX="158.0" layoutY="10.0" textFill="#66fcf1" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="402.0" spacing="10.0">
                      <children>
-                        <Label text="Move Duration (second):" />
+                        <Label style="-fx-text-fill: #66fcf1;" text="Move Duration (second):" />
                         <Slider fx:id="moveSlider" blockIncrement="0.2" majorTickUnit="0.4" max="2.9" min="0.1" onMouseClicked="#setMoveDuration" prefWidth="200.0" showTickLabels="true" showTickMarks="true" />
-                        <Label fx:id="moveText" layoutX="158.0" layoutY="10.0" />
+                        <Label fx:id="moveText" layoutX="158.0" layoutY="10.0" textFill="#66fcf1" />
                      </children>
                   </HBox>
                </children>

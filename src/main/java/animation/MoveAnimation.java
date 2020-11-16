@@ -1,8 +1,12 @@
 package animation;
 
+import control.RectNodeArray;
 import globalVar.TimeDelay;
+import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class MoveAnimation {
@@ -22,7 +26,6 @@ public class MoveAnimation {
         return getMoveRight(sprite, -destination);
     }
 
-
     public static void playMovingLeft(StackPane sprite, int distance) {
         getMoveLeft(sprite, distance).play();
     }
@@ -30,5 +33,6 @@ public class MoveAnimation {
     public static void playMovingRight(StackPane sprite, int distance) {
         getMoveRight(sprite, distance).play();
     }
+
 
 }
