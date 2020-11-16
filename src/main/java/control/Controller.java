@@ -101,6 +101,21 @@ public class Controller implements Initializable {
     @FXML
     void clickNewCreate(ActionEvent event) {
         newMenuButton.setText("Create");
+        List<Integer> newList = new CreateArrBox().getNewArray();
+
+        if (newList != null) {
+
+            numArray.clear();
+            rectLine.getChildren().clear();
+            indexLine.getChildren().clear();
+
+            for (Integer num : newList) {
+                numArray.add(num);
+                rectLine.getChildren().addAll(numArray.getLastRectNode().getView());
+                addIndex();
+            }
+        } // else: user canceled creating.
+        newMenuButton.setText("New");
     }
 
     @FXML

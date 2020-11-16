@@ -20,7 +20,6 @@
             <VBox stylesheets="@../style/PseudoPaneStyle.css">
                <children>
                   <Label text="SORTING VISUALIZATION" />
-                  <Label fx:id="countSwapText" text="COUNT SWAP:" />
                   <Text fx:id="pseudoCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                </children>
                <padding>

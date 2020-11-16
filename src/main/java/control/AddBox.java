@@ -14,11 +14,10 @@ import javafx.stage.Stage;
 
 public class AddBox {
     private int input = -1;
-    private Button addButton = new Button("Add");
-    private Label message = new Label();
+    private final Button addButton = new Button("Add");
+    private final Label message = new Label();
 
     public int getAddNumber() {
-
         final Stage addWindow = new Stage();
 
         addWindow.initModality(Modality.APPLICATION_MODAL);
