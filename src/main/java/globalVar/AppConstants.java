@@ -35,4 +35,10 @@ public class AppConstants {
     public static int JUMP_HEIGHT = -50;
     public static double JUMP_DURATION = 0.5;
 
+    public static String BUBBLE_SORT_PSEUDO = "src/main/resources/pseudocode/BubbleSort.txt";
+    public static String INSERTION_SORT_PSEUDO = "src/main/resources/pseudocode/InsertionSort.txt";
+    public static String SELECTION_SORT_PSEUDO = "src/main/resources/pseudocode/SelectionSort.txt";
+
+
+
 }

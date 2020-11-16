@@ -21,6 +21,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -33,9 +37,6 @@ public class Controller implements Initializable {
 
     @FXML
     private Text pseudoCode;
-
-    @FXML
-    private Label countSwapText;
 
     @FXML
     private MenuButton newMenuButton;
@@ -195,11 +196,13 @@ public class Controller implements Initializable {
     @FXML
     void clickBubbleSort(ActionEvent event) {
         algorithmButton.setText("Bubble Sort");
+        pseudoCode.setText(getPseudoCode(AppConstants.BUBBLE_SORT_PSEUDO));
     }
 
     @FXML
     void clickInsertionSort(ActionEvent event) {
         algorithmButton.setText("Insertion Sort");
+        pseudoCode.setText(getPseudoCode(AppConstants.INSERTION_SORT_PSEUDO));
     }
 
     @FXML
@@ -210,6 +213,7 @@ public class Controller implements Initializable {
     @FXML
     void clickSelectionSort(ActionEvent event) {
         algorithmButton.setText("Selection Sort");
+        pseudoCode.setText(getPseudoCode(AppConstants.SELECTION_SORT_PSEUDO));
     }
 
 
@@ -219,7 +223,9 @@ public class Controller implements Initializable {
         reset();
         if (algorithmButton.getText().equals("Algorithm") || orderButton.getText().equals("Order")) {
             notify("Please choose algorithm and order");
-        } else {
+        } else if (numArray.size() == 1) {
+            numArray.getAt(0).setColor(Color.GRAY);
+        } else if (numArray.size() > 1) {
             boolean ascendOrder = true;
             ascendOrder = orderButton.getText().equals("Ascend");
 
@@ -289,5 +295,22 @@ public class Controller implements Initializable {
         rectLine.getChildren().setAll(numArray.getListView());
     }
 
+    private String getPseudoCode(String pth) {
+        try {
+            StringBuilder pseudo = new StringBuilder();
+            BufferedReader reader = new BufferedReader(new FileReader(pth));
+            String line = reader.readLine();
+            while (line != null) {
+                pseudo.append(line).append("\n");
+                line = reader.readLine();
+            }
+            reader.close();
+            return pseudo.toString();
+        } catch (FileNotFoundException e) {
+            return "Can not open file.";
+        } catch (IOException e) {
+            return "Can not read file.";
+        }
+    }
 
 }

@@ -15,13 +15,20 @@
 
 <SplitPane dividerPositions="0.35" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.Controller">
    <items>
-      <VBox stylesheets="@../style/PseudoPaneStyle.css">
-         <children>
-            <Label text="SORTING VISUALIZATION" />
-            <Label fx:id="countSwapText" text="COUNT SWAP:" />
-            <Text fx:id="pseudoCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-         </children>
-      </VBox>
+      <ScrollPane fitToHeight="true" fitToWidth="true">
+         <content>
+            <VBox stylesheets="@../style/PseudoPaneStyle.css">
+               <children>
+                  <Label text="SORTING VISUALIZATION" />
+                  <Label fx:id="countSwapText" text="COUNT SWAP:" />
+                  <Text fx:id="pseudoCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+               </children>
+               <padding>
+                  <Insets left="20.0" right="15.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
       <ScrollPane fitToHeight="true" fitToWidth="true" stylesheets="@../style/PaneStyle.css">
          <content>
             <VBox alignment="TOP_CENTER">

@@ -17,7 +17,6 @@ public class BubbleSort {
         SequentialTransition bubbleSort = SwapAnimation.getSwap(rectArr, 0, 1, byAscendOrder, rectLine);
         bubbleSort.setOnFinished(event -> setNextSwap(rectArr, byAscendOrder, rectLine));
         bubbleSort.play();
-
     }
 
 
