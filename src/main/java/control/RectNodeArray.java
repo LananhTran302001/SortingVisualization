@@ -85,6 +85,10 @@ public class RectNodeArray {
         }
     }
 
+    public void updateNodeAt(int index, int value) {
+        rectArr.set(index, new RectNode(value));
+    }
+
     public RectNode getAt(int index) {
         if (index >= 0 && index < rectArr.size()) {
             return rectArr.get(index);
