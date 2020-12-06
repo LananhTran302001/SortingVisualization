@@ -26,6 +26,10 @@ public class JumpAnimation {
         return getJumpAction(sprite, AppConstants.JUMP_HEIGHT);
     }
 
+    public static TranslateTransition getJumpUpAction(StackPane sprite, int destination) {
+        return getJumpAction(sprite, destination);
+    }
+
     public static TranslateTransition getJumpDownAction(StackPane sprite) {
         return getJumpAction(sprite, -AppConstants.JUMP_HEIGHT);
     }

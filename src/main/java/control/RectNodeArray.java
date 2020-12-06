@@ -13,6 +13,10 @@ public class RectNodeArray {
 
     private List<RectNode> rectArr = new ArrayList<RectNode>();
 
+    /**
+     * Constructor without parameters.
+     * Create an empty rectNodeArr.
+     */
     public RectNodeArray() {
         rectArr.clear();
     }
@@ -24,11 +28,30 @@ public class RectNodeArray {
         }
     }
 
+    /**
+     * Copy another rectNodeArray.
+     */
     public RectNodeArray( RectNodeArray other) {
         rectArr.clear();
         int n = other.size();
         for (int i = 0; i < n; i++) {
             rectArr.add(new RectNode(other.getValueAt(i)));
+        }
+    }
+
+    /**
+     * copy from index: begin to end of rect node array.
+     * for (i = begin, i <= end, i++)
+     * @param other other rect node array.
+     * @param begin left bound index.
+     * @param end right bound index.
+     */
+    public RectNodeArray(RectNodeArray other, int begin, int end) {
+        rectArr.clear();
+        if (begin >= 0 && begin <= end && end < other.size()) {
+            for (int i = begin; i <= end; i++) {
+                rectArr.add(other.getAt(i));
+            }
         }
     }
 
@@ -115,6 +138,9 @@ public class RectNodeArray {
         Collections.swap(rectArr, index01, index02);
     }
 
+    /**
+     * Get distance from index01 to index02.
+     */
     public int getDistance(int index01, int index02) {
         return (index02 - index01) * (AppConstants.SPACE +  AppConstants.WIDTH_UNIT);
     }
@@ -134,20 +160,5 @@ public class RectNodeArray {
             rn.setOriginalColor();
         }
     }
-    /*public Vector2 getNextPosition(RectNode rn) {
-        if (rn == null) {
-            return new Vector2(0, 0);
-        }
-        return new Vector2(rn.getPosition().add(new Vector2(AppConstants.SPACE + AppConstants.WIDTH_UNIT, 0)));
-    }
-
-
-    public Vector2 getNextPosition() {
-        if (getLastRectNode() == null) {
-            return new Vector2(0, 0);
-        }
-        return getNextPosition(getLastRectNode());
-    }
-    */
 
 }

@@ -1,12 +1,9 @@
 package animation;
 
-import control.RectNodeArray;
 import globalVar.TimeDelay;
-import javafx.animation.SequentialTransition;
+import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class MoveAnimation {
@@ -24,6 +21,15 @@ public class MoveAnimation {
 
     protected static TranslateTransition getMoveLeft(StackPane sprite, int destination) {
         return getMoveRight(sprite, -destination);
+    }
+
+
+    protected static ParallelTransition getMove(StackPane sprite, int destinationX, int destinationY) {
+        ParallelTransition transition = new ParallelTransition();
+        transition.getChildren().add(JumpAnimation.getJumpUpAction(sprite, destinationY));
+        transition.getChildren().add(MoveAnimation.getMoveRight(sprite, destinationX));
+
+        return transition;
     }
 
     public static void playMovingLeft(StackPane sprite, int distance) {

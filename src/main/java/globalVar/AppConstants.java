@@ -19,8 +19,6 @@ public class AppConstants {
 
     public static final int SORT_PANE_HEIGHT = 500;
 
-    public static final double MIN_DELAY = 0.1;
-
     public static final int VALUE_BOTTOM_BOUND = 0;
     public static final int VALUE_UPPER_BOUND = 150;
 
@@ -33,12 +31,14 @@ public class AppConstants {
     public static final int BOX_SPACE = 20;
 
     public static int JUMP_HEIGHT = -50;
-    public static double JUMP_DURATION = 0.5;
+
+    public static String LEFT_COLOR = "#996666";
+    public static String RIGHT_COLOR = "#cc9966";
 
     public static String BUBBLE_SORT_PSEUDO = "src/main/resources/pseudocode/BubbleSort.txt";
     public static String INSERTION_SORT_PSEUDO = "src/main/resources/pseudocode/InsertionSort.txt";
     public static String SELECTION_SORT_PSEUDO = "src/main/resources/pseudocode/SelectionSort.txt";
-
+    public static String MERGE_SORT_PSEUDO = "src/main/resources/pseudocode/MergeSort.txt";
 
 
 }

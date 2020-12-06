@@ -6,3 +6,10 @@ VBox {
 .label {
     -fx-text-fill: #112d32;
 }
+
+.toggle-button {
+    -fx-cursor: HAND;
+    -fx-text-fill: #111111;
+    -fx-background-color: #ffffff;
+}
+

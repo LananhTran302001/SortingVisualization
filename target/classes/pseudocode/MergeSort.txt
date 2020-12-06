@@ -1,0 +1,59 @@
+MERGE SORT
+
+ASCEND ORDER:
+
+void merge(int arr[], int left, int mid, int right) {
+
+    int sizeArrLeft = mid - left + 1;
+    int sizeArrRight = right - mid;
+
+    int leftArr[sizeArrLeft];
+    int rightArr[sizeArrRight];
+
+    for (int i = 0; i < sizeArrLeft; i++) {
+        leftArr[i] = arr[left + i];
+    }
+    for (int j = 0; j < sizeArrRight; j++) {
+            rightArr[j] = arr[mid + 1 + j];
+    }
+
+    int i = 0;
+    int j = 0;
+    int k = left;
+
+    while (i < sizeArrLeft && j < sizeArrRight) {
+        if (leftArr[i] <= rightArr[j] {
+            arr[k] = leftArr[i];
+            i++;
+        } else {
+            arr[k] = rightArr[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < sizeArrLeft) {
+        arr[k] = leftArr[i];
+        i++;
+        k++;
+    }
+
+    while (i < sizeArrRight) {
+        arr[k] = rightArr[i];
+        i++;
+        k++;
+    }
+
+}
+
+void mergeSort(int arr[], int left, int right) {
+    if (left < right)  {
+        int mid = left + (right - left) / 2;
+
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+}
+
+Time complexity: O(n*log(n))

@@ -2,8 +2,8 @@ package control;
 
 import algorithm.BubbleSort;
 import algorithm.InsertionSort;
+import algorithm.MergeSort;
 import algorithm.SelectionSort;
-import animation.SwapAnimation;
 import globalVar.AppConstants;
 
 import globalVar.Count;
@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 
 import javafx.scene.input.MouseEvent;
@@ -37,6 +38,9 @@ public class Controller implements Initializable {
 
     @FXML
     private Text pseudoCode;
+
+    @FXML
+    private ToggleButton notifyButton;
 
     @FXML
     private MenuButton newMenuButton;
@@ -72,6 +76,9 @@ public class Controller implements Initializable {
     private HBox indexLine;
 
     @FXML
+    private HBox tempLine;
+
+    @FXML
     private Slider pauseSlider;
 
     @FXML
@@ -86,6 +93,7 @@ public class Controller implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         rectLine.setSpacing(AppConstants.SPACE);
+        tempLine.setSpacing(AppConstants.SPACE);
         indexLine.setSpacing(AppConstants.SPACE);
         indexLine.setPrefHeight(AppConstants.HEIGHT_INDEX);
         Count.resetSwapCount();
@@ -166,6 +174,7 @@ public class Controller implements Initializable {
         int number = new AddBox().getAddNumber();
         if (number > 0) {
             numArray.add(number);
+            // get element just been added to numArray.
             rectLine.getChildren().addAll(numArray.getLastRectNode().getView());
             addIndex();
             notify("Added successfully");
@@ -182,6 +191,7 @@ public class Controller implements Initializable {
             rectLine.getChildren().remove(index);
             removeLastIndex();
             numArray.deleteAt(index);
+            notify("Deleted successfully");
         }
         // else: user canceled delete.
     }
@@ -231,7 +241,11 @@ public class Controller implements Initializable {
         pseudoCode.setText(getPseudoCode(AppConstants.SELECTION_SORT_PSEUDO));
     }
 
-
+    @FXML
+    void clickMergeSort(ActionEvent event) {
+        algorithmButton.setText("Merge Sort");
+        pseudoCode.setText(getPseudoCode(AppConstants.MERGE_SORT_PSEUDO));
+    }
 
     @FXML
     void clickSort(ActionEvent event) {
@@ -251,6 +265,8 @@ public class Controller implements Initializable {
                 SelectionSort.startSelectionSort(numArray, ascendOrder, rectLine);
             } else if (algo.equals("Insertion Sort")) {
                 InsertionSort.startInsertionSort(numArray, ascendOrder, rectLine);
+            } else if (algo.equals("Merge Sort")) {
+                MergeSort.startMergeSort(numArray, ascendOrder, rectLine);
             }
         }
     }
@@ -271,6 +287,21 @@ public class Controller implements Initializable {
         Float duration = Float.parseFloat(pauseText.getText());
         TimeDelay.setPauseDuration(duration);
         System.out.println("set pauseDuration: " + duration);
+    }
+
+    @FXML
+    void setNotification(ActionEvent event) {
+        if (notifyButton.getText().equals("Notify On")) {
+            allowNotify = false;
+            notifyButton.setText("Notify Off");
+        } else {
+            allowNotify = true;
+            notifyButton.setText("Notify On");
+        }
+    }
+
+    public void addToTempLine(Node node) {
+        tempLine.getChildren().addAll(node);
     }
 
     private void notify(String message) {
@@ -310,6 +341,11 @@ public class Controller implements Initializable {
         rectLine.getChildren().setAll(numArray.getListView());
     }
 
+    /**
+     * Read pseudocode from file.
+     * @param pth path to pseudocode file.
+     * @return pseudocode in string.
+     */
     private String getPseudoCode(String pth) {
         try {
             StringBuilder pseudo = new StringBuilder();
