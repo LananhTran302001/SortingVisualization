@@ -12,7 +12,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 
 import javafx.scene.input.MouseEvent;
@@ -21,10 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -95,6 +91,7 @@ public class Controller implements Initializable {
 
         pauseText.setText("0.1");
         moveText.setText("0.1");
+        pseudoCode.setText("");
 
         pauseSlider.valueProperty().addListener((observable, oldValue, newValue) -> pauseText.textProperty().bind(Bindings.format("%.1f", pauseSlider.valueProperty())));
 
@@ -335,7 +332,8 @@ public class Controller implements Initializable {
     private String getPseudoCode(String pth) {
         try {
             StringBuilder pseudo = new StringBuilder();
-            BufferedReader reader = new BufferedReader(new FileReader(pth));
+            InputStream in = getClass().getResourceAsStream(pth);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             String line = reader.readLine();
             while (line != null) {
                 pseudo.append(line).append("\n");

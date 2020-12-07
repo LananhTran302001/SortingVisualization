@@ -1,3 +1,5 @@
+package run;
+
 import globalVar.AppConstants;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

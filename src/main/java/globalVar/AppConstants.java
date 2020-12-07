@@ -35,9 +35,9 @@ public class AppConstants {
     public static String LEFT_COLOR = "#996666";
     public static String RIGHT_COLOR = "#cc9966";
 
-    public static String BUBBLE_SORT_PSEUDO = "src/main/resources/pseudocode/BubbleSort.txt";
-    public static String INSERTION_SORT_PSEUDO = "src/main/resources/pseudocode/InsertionSort.txt";
-    public static String SELECTION_SORT_PSEUDO = "src/main/resources/pseudocode/SelectionSort.txt";
+    public static String BUBBLE_SORT_PSEUDO = "/pseudocode/BubbleSort.txt";
+    public static String INSERTION_SORT_PSEUDO = "/pseudocode/InsertionSort.txt";
+    public static String SELECTION_SORT_PSEUDO = "/pseudocode/SelectionSort.txt";
 
 
 }
