@@ -2,7 +2,6 @@ package control;
 
 import algorithm.BubbleSort;
 import algorithm.InsertionSort;
-import algorithm.MergeSort;
 import algorithm.SelectionSort;
 import globalVar.AppConstants;
 
@@ -76,9 +75,6 @@ public class Controller implements Initializable {
     private HBox indexLine;
 
     @FXML
-    private HBox tempLine;
-
-    @FXML
     private Slider pauseSlider;
 
     @FXML
@@ -93,7 +89,6 @@ public class Controller implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         rectLine.setSpacing(AppConstants.SPACE);
-        tempLine.setSpacing(AppConstants.SPACE);
         indexLine.setSpacing(AppConstants.SPACE);
         indexLine.setPrefHeight(AppConstants.HEIGHT_INDEX);
         Count.resetSwapCount();
@@ -231,21 +226,11 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void clickQuickSort(ActionEvent event) {
-        algorithmButton.setText("Quick Sort");
-    }
-
-    @FXML
     void clickSelectionSort(ActionEvent event) {
         algorithmButton.setText("Selection Sort");
         pseudoCode.setText(getPseudoCode(AppConstants.SELECTION_SORT_PSEUDO));
     }
 
-    @FXML
-    void clickMergeSort(ActionEvent event) {
-        algorithmButton.setText("Merge Sort");
-        pseudoCode.setText(getPseudoCode(AppConstants.MERGE_SORT_PSEUDO));
-    }
 
     @FXML
     void clickSort(ActionEvent event) {
@@ -260,17 +245,21 @@ public class Controller implements Initializable {
 
             String algo = algorithmButton.getText();
             if (algo.equals("Bubble Sort")) {
-                BubbleSort.startBubbleSort(numArray, ascendOrder, rectLine);
+                BubbleSort.startBubbleSort(numArray, ascendOrder, rectLine, sortButton);
+                sortButton.setDisable(true);
             } else if (algo.equals("Selection Sort")) {
-                SelectionSort.startSelectionSort(numArray, ascendOrder, rectLine);
+                SelectionSort.startSelectionSort(numArray, ascendOrder, rectLine, sortButton);
+                sortButton.setDisable(true);
             } else if (algo.equals("Insertion Sort")) {
-                InsertionSort.startInsertionSort(numArray, ascendOrder, rectLine);
-            } else if (algo.equals("Merge Sort")) {
-                MergeSort.startMergeSort(numArray, ascendOrder, rectLine);
+                InsertionSort.startInsertionSort(numArray, ascendOrder, rectLine, sortButton);
+                sortButton.setDisable(true);
             }
         }
     }
 
+    public void setAvailableSort() {
+        sortButton.setDisable(false);
+    }
 
     @FXML
     void setMoveDuration(MouseEvent event) {
@@ -300,9 +289,6 @@ public class Controller implements Initializable {
         }
     }
 
-    public void addToTempLine(Node node) {
-        tempLine.getChildren().addAll(node);
-    }
 
     private void notify(String message) {
         System.out.println(message);

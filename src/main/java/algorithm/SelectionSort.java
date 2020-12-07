@@ -4,6 +4,7 @@ import animation.JumpAnimation;
 import animation.SwapAnimation;
 import control.RectNodeArray;
 import javafx.animation.SequentialTransition;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
@@ -12,7 +13,8 @@ public class SelectionSort {
     private static int j = 0;
     private static int index = 0;
 
-    public static void startSelectionSort(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine) {
+    public static void startSelectionSort(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine, Button sortButton) {
+        sortButton.setDisable(true);
         index = 0;
 
         i = rectArr.size() - 1;
@@ -37,14 +39,14 @@ public class SelectionSort {
 
         selectionSort.setOnFinished(event -> {
             rectArr.getAt(i).setColor(Color.GRAY);
-            setNextSelect(rectArr, byAscendOrder, rectLine);
+            setNextSelect(rectArr, byAscendOrder, rectLine, sortButton);
         });
         selectionSort.play();
 
     }
 
 
-    private static void setNextSelect(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine) {
+    private static void setNextSelect(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine, Button sortButton) {
         if (i > 1) {
             i--;
             index = 0;
@@ -68,7 +70,7 @@ public class SelectionSort {
             }
             nextSelection.setOnFinished(event -> {
                 rectArr.getAt(i).setColor(Color.GRAY);
-                setNextSelect(rectArr, byAscendOrder, rectLine);
+                setNextSelect(rectArr, byAscendOrder, rectLine, sortButton);
             });
             nextSelection.play();
 
@@ -76,6 +78,7 @@ public class SelectionSort {
             rectArr.getAt(0).setColor(Color.GRAY);
             rectArr.getAt(1).setColor(Color.GRAY);
             System.out.println("Done");
+            sortButton.setDisable(false);
         }
     }
 }

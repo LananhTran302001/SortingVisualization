@@ -8,6 +8,7 @@ import globalVar.TimeDelay;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -17,17 +18,18 @@ public class InsertionSort {
     private static int i = 1;
     private static int j = 0;
 
-    public static void startInsertionSort(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine) {
+    public static void startInsertionSort(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine, Button sortButton) {
+        sortButton.setDisable(true);
         i = 1;
         j = 0;
         TranslateTransition insertionSort = JumpAnimation.getJumpUpAction(rectArr.getViewAt(j));
 
-        insertionSort.setOnFinished(event -> setNextInsert(rectArr, byAscendOrder, rectLine));
+        insertionSort.setOnFinished(event -> setNextInsert(rectArr, byAscendOrder, rectLine, sortButton));
 
         insertionSort.play();
     }
 
-    private static void setNextInsert(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine) {
+    private static void setNextInsert(RectNodeArray rectArr, boolean byAscendOrder, HBox rectLine, Button sortButton) {
         if (i <= rectArr.size() && j >= 0) {
 
             SequentialTransition nextInsert = new SequentialTransition();
@@ -69,10 +71,11 @@ public class InsertionSort {
                 nextInsert.getChildren().add(movingForward);
             }
 
-            nextInsert.setOnFinished(event -> setNextInsert(rectArr, byAscendOrder, rectLine));
+            nextInsert.setOnFinished(event -> setNextInsert(rectArr, byAscendOrder, rectLine, sortButton));
             nextInsert.play();
 
         } else {
+            sortButton.setDisable(false);
             System.out.println("Done");
         }
     }

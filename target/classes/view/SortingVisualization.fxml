@@ -65,9 +65,7 @@
                           <items>
                             <MenuItem mnemonicParsing="false" onAction="#clickBubbleSort" text="Bubble Sort" />
                             <MenuItem mnemonicParsing="false" onAction="#clickInsertionSort" text="Insertion Sort" />
-                              <MenuItem mnemonicParsing="false" onAction="#clickQuickSort" text="Quick Sort" />
                               <MenuItem mnemonicParsing="false" onAction="#clickSelectionSort" text="Selection Sort" />
-                              <MenuItem mnemonicParsing="false" onAction="#clickMergeSort" text="Merge Sort" />
                           </items>
                         </MenuButton>
                         <MenuButton fx:id="orderButton" mnemonicParsing="false" text="Order" textFill="WHITE">
@@ -90,7 +88,6 @@
                         <HBox fx:id="rectLine" alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
                         <HBox fx:id="indexLine" alignment="BOTTOM_CENTER" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                      </children></AnchorPane>
-                  <HBox fx:id="tempLine" alignment="BOTTOM_CENTER" />
                   <HBox alignment="TOP_CENTER" spacing="10.0">
                      <children>
                         <Label style="-fx-text-fill: #66fcf1;" text="Pause Duration (second):" />

@@ -79,9 +79,15 @@ public class RectNodeArray {
         }
     }
 
-    protected void add(int n) {
+    public void add(int n) {
         if (n > 0) {
             rectArr.add(new RectNode(n));
+        }
+    }
+
+    public void add(RectNode rectNode) {
+        if (rectNode != null && !rectArr.contains(rectNode)) {
+            rectArr.add(rectNode);
         }
     }
 

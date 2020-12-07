@@ -38,7 +38,6 @@ public class AppConstants {
     public static String BUBBLE_SORT_PSEUDO = "src/main/resources/pseudocode/BubbleSort.txt";
     public static String INSERTION_SORT_PSEUDO = "src/main/resources/pseudocode/InsertionSort.txt";
     public static String SELECTION_SORT_PSEUDO = "src/main/resources/pseudocode/SelectionSort.txt";
-    public static String MERGE_SORT_PSEUDO = "src/main/resources/pseudocode/MergeSort.txt";
 
 
 }
