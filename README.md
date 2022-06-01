@@ -1,6 +1,4 @@
 # SortingVisualization
-a DSA project
-
 This is my project in Data structures and algorithms class.<br />
 Visualization of 3 basic sorting algorithms: Bubble sort, Insertion sort and Selection sort.<br /><br />
 
@@ -10,4 +8,4 @@ This is the UI:<br />
 
 <br />
 Result:<br />
-![result]([https://user-images.githubusercontent.com/57004492/171311627-18aa6e3b-6262-4895-a974-16a607ca59f1.png])
+![result](https://user-images.githubusercontent.com/57004492/171311627-18aa6e3b-6262-4895-a974-16a607ca59f1.png)
